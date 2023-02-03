@@ -1,0 +1,14 @@
+/* add your CSS here */
+#main{
+    padding: 1px;
+    background: url('phone.png') 960px 130px no-repeat,url('rbackground.png') right top no-repeat, url('wbackground.png') left top no-repeat;
+    background-size: 250px,450px 1000px, cover;
+    height: 750px;
+    width: 1525px;
+    background-origin: border-box;
+}
+/* url('phone.png') 950px 130px, size = 250px   */
+.contents{
+    height: 750px;
+    width: 1525px;
+}
