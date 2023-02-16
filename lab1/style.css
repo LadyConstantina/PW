@@ -1,13 +1,119 @@
 /* add your CSS here */
-#main{
+#main {
     padding: 1px;
-    background: url('images/phone.png') 960px 130px no-repeat,url('images/rbackground.png') right top no-repeat, url('images/wbackground.png') left top no-repeat;
-    background-size: 250px,450px 1000px, cover;
+    background: url('images/pear2.png') 650px 565px no-repeat,
+                url('images/red-noise-left.png') 0px 100px no-repeat,
+                url('images/strawberry-left.png') 0px 460px no-repeat,
+                url('images/strawberry-up.png') 693px 0px no-repeat,
+                url('images/white-noise-right.png') 1400px 508px no-repeat,
+                url('images/phone.png') 940px 110px no-repeat,
+                url('images/zigzag.png') center top no-repeat;
+    background-size: 250px,100px,110px,150px,100px,250px,cover;
     height: 750px;
-    width: 1525px;
+    width: 1500px;
     background-origin: border-box;
-}
+  }
 .contents{
-    height: 750px;
-    width: 1525px;
+    height: 725px;
+    width: 1500px;
 }
+
+.text {
+    font-family: Raleway Semibold;
+}
+
+#text0 {
+    position: absolute;
+    left: 14vw;
+    color: #ff6329;
+    text-align: right;
+    top: 60px;
+    font-size: 7vw;
+    width: 550px;
+}
+
+#text1 {
+    position: absolute;
+    left: 15vw;
+    color: #000;
+    text-align: center;
+    top: 400px;
+    font-size: 1vw;
+    width: 540px;
+}
+
+#text2 {
+    writing-mode: vertical-lr;
+    font-size: 25px;
+    left: 1300px;
+    position: absolute;
+    top: 185px;
+    width: 100px;
+    height: 395px;
+    color: #fae2d1;
+  }
+
+.button {
+    border: 3px solid black;
+    border-radius: 20px;
+    height: 30px;
+    width: 110px;
+    font-family: Raleway Semibold;
+}
+
+#button0 {
+    color: #fae2d1;
+    background-color: #ff6329;
+    position: relative;
+    left: 25vw;
+    top: 480px;
+}
+
+#button1 {
+    color: #ff6329;
+    background-color: #fae2d1;
+    position: relative;
+    left: 27vw;
+    top: 480px;
+}
+
+#menu {
+    height: 91px;
+    width: 1220px;
+    position: absolute;
+    left: 10vw;
+    top: 33px;
+    color: #ff6329;
+  }
+
+#home {
+    font-weight: bold;
+    font-size: 22px;
+    top: 8px;
+    position: absolute;
+    left: 8vw;
+  }
+
+#about {
+    font-weight: bold;
+    font-size: 22px;
+    top: 8px;
+    position: absolute;
+    left: 13vw;
+  }
+
+#shop {
+    font-weight: bold;
+    font-size: 22px;
+    top: 8px;
+    position: absolute;
+    left: 18vw;
+  }
+
+#contact {
+    font-weight: bold;
+    font-size: 22px;
+    top: 8px;
+    position: absolute;
+    left: 22vw;
+  }
