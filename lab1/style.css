@@ -30,6 +30,17 @@
   background-size: 150px,200px,200px,150px,cover;
 }
 
+#third{
+  background: url('images/red-noise-left.png') -20px 660px no-repeat,
+              url('images/red-noise-left.png') 1320px 100px no-repeat,
+              url('images/background3.png') center top no-repeat;
+  background-size: 100px, 200px,cover;
+  position: absolute;
+  width: 1505px;
+  height: 925px;
+  top: 1520px;
+  margin: 0px;
+}
 
 .text {
     font-family: Raleway Semibold;
@@ -74,7 +85,7 @@
     font-size: 2vw;
   }
 
-  #text4 {
+#text4 {
     position: absolute;
     left: 22vw;
     color: #fae2d1;
@@ -94,6 +105,48 @@
     font-size: 1vw;
     width: 495px;
   }
+
+#text6 {
+    position: relative;
+    left: 30vw;
+    color: #ff6329;
+    top: 76px;
+    font-size: 6vw;
+    width: 581px;
+    margin: 0px;
+}
+
+#text7 {
+  position: absolute;
+  left: 29vw;
+  color: #000;
+  text-align: center;
+  top: 183px;
+  font-size: 1vw;
+  width: 616px;
+}
+
+.box {
+  height: 350px;
+}
+
+#box1 {
+  left: 230px;
+  position: absolute;
+  top: 314px;
+}
+
+#box2 {
+  left: 595px;
+  position: absolute;
+  top: 314px;
+}
+
+#box3 {
+  left: 960px;
+  position: absolute;
+  top: 314px;
+}
 
 .button {
     border: 3px solid black;
@@ -129,6 +182,30 @@
   width: 130px;
   font-size: 15px;
   font-family: Raleway ExtraBold;
+}
+
+#button4 {
+  top: 700px;
+  position: absolute;
+  left: 464px;
+  background-color: #ff6329;
+  color: #fae2d1;
+}
+
+#button5 {
+  top: 700px;
+  position: absolute;
+  left: 828px;
+  background-color: #ff6329;
+  color: #fae2d1;
+}
+
+#button6 {
+  top: 700px;
+  position: absolute;
+  left: 1193px;
+  background-color: #ff6329;
+  color: #fae2d1;
 }
 
 #menu {
@@ -171,3 +248,49 @@
     position: absolute;
     left: 22vw;
   }
+
+.fruit {
+    height: 270px;
+  }
+
+#fruit1 {
+    position: absolute;
+    top: 351px;
+    left: 312px;
+  }
+
+#fruit2 {
+    position: absolute;
+    left: 708px;
+    top: 348px;
+  }
+
+#fruit3 {
+    height: 180px;
+    position: absolute;
+    top: 405px;
+    left: 1015px;
+  }
+
+.product {
+    font-family: Raleway ExtraBold;
+    color: #000;
+    font-size: 25px;
+    position: absolute;
+    top: 677px;
+  }
+
+.price {
+    font-family: Raleway SemiBold;
+    color: #ff6329;
+    position: absolute;
+    top: 710px;
+    font-size: 20px;
+  }
+
+.arrow {
+    position: absolute;
+    top: 850px;
+  }
+
+
