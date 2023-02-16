@@ -42,27 +42,38 @@
   margin: 0px;
 }
 
+#fourth {
+  background: url('images/card.png') 750px 170px no-repeat,url('images/point_white2.png') -20px 100px no-repeat, url('images/point_white2.png') 1320px 400px no-repeat, url('images/background4.png') center top no-repeat;
+    background-size: auto, auto, auto, auto;
+  background-size: 470px,120px, 200px,cover;
+  position: absolute;
+  width: 1505px;
+  height: 800px;
+  top: 2443px;
+  margin: 0px;
+}
+
 .text {
     font-family: Raleway Semibold;
 }
 
 #text0 {
     position: absolute;
-    left: 14vw;
+    left: 220px;
     color: #ff6329;
     text-align: right;
     top: 60px;
-    font-size: 7vw;
+    font-size: 105px;
     width: 550px;
 }
 
 #text1 {
     position: absolute;
-    left: 15vw;
+    left: 235px;
     color: #000;
     text-align: center;
     top: 400px;
-    font-size: 1vw;
+    font-size: 16px;
     width: 540px;
 }
 
@@ -79,51 +90,69 @@
 
 #text3 {
     position: absolute;
-    left: 42vw;
+    left: 660px;
     color: #000;
-    top: 125px;
-    font-size: 2vw;
+    top: 126px;
+    font-size: 30px;
   }
 
 #text4 {
     position: absolute;
-    left: 22vw;
+    left: 340px;
     color: #fae2d1;
     text-align: center;
     top: 90px;
-    font-size: 7vw;
+    font-size: 107px;
     width: 825px;
   }
 
 
 #text5 {
     position: absolute;
-    left: 33vw;
+    left: 500px;
     color: #fae2d1;
     text-align: center;
-    top: 476px;
-    font-size: 1vw;
+    top: 470px;
+    font-size: 15px;
     width: 495px;
   }
 
 #text6 {
     position: relative;
-    left: 30vw;
+    left: 480px;
     color: #ff6329;
     top: 76px;
-    font-size: 6vw;
+    font-size: 92px;
     width: 581px;
     margin: 0px;
 }
 
 #text7 {
   position: absolute;
-  left: 29vw;
+  left: 460px;
   color: #000;
   text-align: center;
   top: 183px;
-  font-size: 1vw;
+  font-size: 15px;
   width: 616px;
+}
+
+#text8 {
+  font-size: 100px;
+  color: #fae2d1;
+  position: absolute;
+  left: 130px;
+  margin: 0px;
+  top: 100px;
+}
+
+#text9 {
+  font-size: 22px;
+  color: #fae2d1;
+  position: absolute;
+  left: 135px;
+  margin: 0px;
+  font-family: Raleway ExtraBold;
 }
 
 .box {
@@ -160,7 +189,7 @@
     color: #fae2d1;
     background-color: #ff6329;
     position: relative;
-    left: 25vw;
+    left: 380px;
     top: 480px;
 }
 
@@ -168,7 +197,7 @@
     color: #ff6329;
     background-color: #fae2d1;
     position: relative;
-    left: 27vw;
+    left: 415px;
     top: 480px;
 }
 
@@ -176,7 +205,7 @@
   color: #ff6329;
   background-color: #fae2d1;
   position: relative;
-  left: 45vw;
+  left: 683px;
   top: 580px;
   height: 35px;
   width: 130px;
@@ -222,7 +251,7 @@
     font-size: 22px;
     top: 8px;
     position: absolute;
-    left: 8vw;
+    left: 120px;
   }
 
 #about {
@@ -230,7 +259,7 @@
     font-size: 22px;
     top: 8px;
     position: absolute;
-    left: 13vw;
+    left: 200px;
   }
 
 #shop {
@@ -238,7 +267,7 @@
     font-size: 22px;
     top: 8px;
     position: absolute;
-    left: 18vw;
+    left: 280px;
   }
 
 #contact {
@@ -246,7 +275,7 @@
     font-size: 22px;
     top: 8px;
     position: absolute;
-    left: 22vw;
+    left: 350px;
   }
 
 .fruit {
@@ -293,4 +322,14 @@
     top: 850px;
   }
 
+.plus {
+    position: absolute;
+    left: 647px;
+    height: 17px;
+  }
 
+.line {
+    position: absolute;
+    left: 135px;
+    width: 530px;
+  }
