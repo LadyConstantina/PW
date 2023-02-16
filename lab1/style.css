@@ -18,6 +18,19 @@
     width: 1500px;
 }
 
+#second {
+  background: url('images/point_white2.png') -35px 130px no-repeat,
+              url('images/bananas.png') 90px 470px no-repeat,
+              url('images/quince.png') 1250px 130px no-repeat,
+              url('images/point_orange.png') 1370px 560px no-repeat,
+              url('images/background2.png') center top no-repeat;
+  position: absolute;
+  height: 760px;
+  width: 1503px;
+  background-size: 150px,200px,200px,150px,cover;
+}
+
+
 .text {
     font-family: Raleway Semibold;
 }
@@ -53,6 +66,35 @@
     color: #fae2d1;
   }
 
+#text3 {
+    position: absolute;
+    left: 42vw;
+    color: #000;
+    top: 125px;
+    font-size: 2vw;
+  }
+
+  #text4 {
+    position: absolute;
+    left: 22vw;
+    color: #fae2d1;
+    text-align: center;
+    top: 90px;
+    font-size: 7vw;
+    width: 825px;
+  }
+
+
+#text5 {
+    position: absolute;
+    left: 33vw;
+    color: #fae2d1;
+    text-align: center;
+    top: 476px;
+    font-size: 1vw;
+    width: 495px;
+  }
+
 .button {
     border: 3px solid black;
     border-radius: 20px;
@@ -75,6 +117,18 @@
     position: relative;
     left: 27vw;
     top: 480px;
+}
+
+#button3 {
+  color: #ff6329;
+  background-color: #fae2d1;
+  position: relative;
+  left: 45vw;
+  top: 580px;
+  height: 35px;
+  width: 130px;
+  font-size: 15px;
+  font-family: Raleway ExtraBold;
 }
 
 #menu {
