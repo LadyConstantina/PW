@@ -1,6 +1,7 @@
 import argparse
 import VisitWeb
 import Parse
+import webbrowser
 
 def main():
     parser = argparse.ArgumentParser(description = "go2web parser")
@@ -11,46 +12,50 @@ def main():
         nargs=1,
         metavar="url path",
         default=None,
-        help="Sends a get request to the url and shows the response")
+        help="send a get request to the url and show the response")
 
     parser.add_argument(
         "-s",
         "--search",
         type = str,
         nargs='*',
-        metavar="search path",
+        metavar="search words",
         default=None,
-        help="Searches the data and shows frist 10 links"
+        help="search the data and show first 10 links"
     )
 
     args = parser.parse_args()
 
     if args.url != None:
-        visit(args.url)
-    if args.search != None:
+        visit(args.url[0].encode('utf-8'))
+    elif args.search != None:
         search(args.search)
         
 def visit(url):
-    webpage = VisitWeb.WebPage(url[0])
+    webpage = VisitWeb.WebPage(url)
     resp,types = webpage.get_response()
     parser = Parse.Parser(resp,types)
-    print(parser.get_resp())
+    resp = parser.get_resp()
+    print(resp)
 
 def search(search):
     arguments = '+'.join(search)
-    url1 = "https//www.google.com/search?q="+arguments+"&start=0"
-    url2 = "https//www.google.com/search?q="+arguments+"&start=1"
-    webpage1 = VisitWeb.WebPage(url1,print = False)
-    webpage2 = VisitWeb.WebPage(url2,print = False)
+    url1 = "https//www.google.com/search?q="+arguments
+    webpage1 = VisitWeb.WebPage(url1.encode('utf-8'),print = False)
     resp_1,type = webpage1.get_response()
-    resp_2,type = webpage2.get_response()
     parser = Parse.Parser(resp_1,type)
-    resp_1 = parser.get_links()
-    parser = Parse.Parser(resp_2,type)
-    resp_2 = parser.get_links()
-    links = resp_1+resp_2
-    for element in links:
-        print(element)
+    resp = parser.get_links()
+    for element in resp:
+        print(element,":",resp[element].decode()[8:28])
+    nr = 'a'
+    while nr != 'q' :
+        nr = input("Which link would you like to open? [quit with q] :")
+        if nr >= '0' and nr <= '9':
+            visit(resp[nr])
+        elif nr == 'q':
+            print("Bye!")
+        else:
+            print("Error: No link with such a number!")
 
 if __name__ == "__main__":
     main()
