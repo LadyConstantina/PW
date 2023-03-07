@@ -1,7 +1,6 @@
 import argparse
 import VisitWeb
 import Parse
-import webbrowser
 
 def main():
     parser = argparse.ArgumentParser(description = "go2web parser")

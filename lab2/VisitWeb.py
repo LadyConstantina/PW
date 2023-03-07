@@ -44,7 +44,7 @@ class WebPage:
             elif b'chunked' in headers:
                 response = self.chuncked(client,contents[4:])
             return response
-        elif b'3' in code:
+        elif b'30' in code:
             start = response.find(b'ocation: ') + len(b'ocation: ')
             end = response.find(b'\r\n',start)
             if self.url == response[start:end]:
