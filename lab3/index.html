@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gilca Constantina FAF 202</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <section class="hello">
+        <h2 class="title">
+        Hi <input type="text" id="name" placeholder="Your name here...">
+        </h2>
+      </section>
+      <section class="new-task">
+        <h3>CREATE A TASK</h3>
+        <form id="new-task-form">
+          <h4>Let's get things done!</h4>
+          <input type="text" name="task" id="task" placeholder="e.g. Start the morning with a coffee...">
+          <h4>Pick the category</h4>
+          <div class="options">
+
+            <label>
+              <input type="radio" name="category" id="category1" value="Personal">
+              <span class="circle Personal"></span>
+              <div>Personal</div>
+            </label>
+
+            <label>
+              <input type="radio" name="category" id="category2" value="Work">
+              <span class="circle Work"></span>
+              <div>Work</div>
+            </label>
+
+          </div>
+
+          <input type="submit" value="Add Task">
+
+        </form>
+      </section>
+
+      <section class="list">
+        <h3>TO DO</h3>
+        <div class="list" id="to-do">
+          <!-- To be added items by script -->
+        </div>
+
+        <h3>DONE</h3>
+        <div class="list" id="done">
+          <!-- To be added items by script -->
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+    <!-- ADD YOUR CODE HERE -->
+  </body>
+</html>
