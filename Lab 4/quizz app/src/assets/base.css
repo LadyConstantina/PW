@@ -1,0 +1,102 @@
+:root {
+  background-color: #f8e3fa;
+  font-size: 64%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Georgia','Barlow';
+  margin: 0;
+  padding: 0;
+  color: #d93bae;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 3rem;
+}
+
+h1{
+  font-size: 6rem;
+  color: #d93bae;
+  margin-bottom: 10%;
+  margin-top: 10%;
+  text-align: center;
+}
+
+h1 > span{
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+h2{
+  font-size: 4.8rem;
+  margin-bottom: 4.6rem;
+  font-weight: 700;
+}
+
+h3{
+  font-size: 3.4rem;
+  font-weight: 500;
+}
+
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.container > *{
+  width: 100%;
+}
+
+.flex_column{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex_center{
+  justify-content: center;
+  align-items: center;
+}
+
+.justify_center {
+  justify-content: center;
+}
+
+.text_center{
+  text-align: center;
+}
+
+.hidden{
+  display: none;
+}
+
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.1rem solid #d93bae;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #d93bae;
+  background-color: white;
+  border-radius: 2rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.6rem 4rem 0 rgba(255, 255, 255, 1);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

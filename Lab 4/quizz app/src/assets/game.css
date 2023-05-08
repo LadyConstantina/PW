@@ -1,0 +1,31 @@
+.choice_container {
+  display: flex;
+  margin-bottom: 2rem;
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+
+.choice_nr{
+  padding: 1.5rem 2rem;
+  background-color: #d93bae;
+  color: white;
+  border-radius: 4rem;
+  margin-right: 0.5rem; 
+}
+
+.choice_text {
+  cursor: pointer;
+  padding: 1.5rem;
+  width: 100%;
+  font-size: 1.8rem;
+  border: 0.1rem solid #d93bae;
+  background-color: white;
+  border-radius: 2rem; 
+}
+
+.choice_container:hover {
+  cursor: pointer;
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
