@@ -53,6 +53,15 @@ def save_news(chat_id,url):
     db.session.commit()
     return send_msg(chat_id,"News saved succesfully!")
 
+def get_saved_news(user_id):
+    select = News.query.filter_by(USER_ID = str(user_id)).all()
+    text = "You have saved the following news: \n\n"
+    id = 1
+    for row in select:
+        text += f'News{id}: {row.URL} \n\n'
+        id += 1
+    return send_msg(user_id,text)
+
 def send_msg(chat_id,message):
     url = f'https://api.telegram.org/bot{__BOT_TOKEN}/sendMessage'
     data = {
@@ -79,19 +88,15 @@ def get_news(args):
         articles = data['articles'][0:6]
         news = []
         for i in range(5):
-            title = articles[i]['title']
             add = articles[i]['url']
-            news.append((title,add))
+            news.append(add)
         return news
     else:
         return []
 
 def send_news(chat_id,news):
-    text = ""
     for article in news:
-        title, url = article
-        text = f'Title: {title} \n Access at {url} \n'
-        send_msg(chat_id,url)
+        send_msg(chat_id,article)
     return []
 
 
@@ -114,6 +119,8 @@ def index():
             send_news(chat_id,news)
         elif command == '/save_news' and len(args)>0:
             save_news(chat_id,args[0])
+        elif command == '/saved_news':
+            get_saved_news(chat_id)
         else:
             send_msg(chat_id,f'Unrecognised command --> {command} \n Type /help for a list of available commands.')
         
