@@ -112,6 +112,8 @@ def index():
         elif command == '/latest_news':
             news = get_news(args)
             send_news(chat_id,news)
+        elif command == '/save_news' and len(args)>0:
+            save_news(chat_id,args[0])
         else:
             send_msg(chat_id,f'Unrecognised command --> {command} \n Type /help for a list of available commands.')
         
