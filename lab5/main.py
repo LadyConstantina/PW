@@ -11,6 +11,17 @@ app = Flask(__name__)
 
 __BOT_TOKEN = '6112376366:AAGg6qRTZR_smiL3sTafCGL7tCN6MOaXbrQ'
 URL = 'https://b1be-89-41-121-123.ngrok-free.app/'
+HELP = ''' Commands Available:
+/start - start the session with bot
+/latest_news [args] - get latest news on a topic or in general
+/save_news url - save one url
+/saved_news - see saved news
+/delete_news url - delete the url from saved news
+'''
+
+
+
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///telegram_bot.db"
 db = SQLAlchemy(app)
@@ -53,8 +64,19 @@ def save_news(chat_id,url):
     db.session.commit()
     return send_msg(chat_id,"News saved succesfully!")
 
+def delete_news(user_id,url):
+    select_list = News.query.filter_by(URL = url, USER_ID = str(user_id)).all()
+    if not select_list:
+        return send_msg(user_id,"No such URL saved.")
+    for record in select_list:
+        db.session.delete(record)
+    db.session.commit()
+    return send_msg(user_id,"URL deleted succesfully.")
+
 def get_saved_news(user_id):
     select = News.query.filter_by(USER_ID = str(user_id)).all()
+    if not select:
+        return send_msg(user_id,"No news saved.")
     text = "You have saved the following news: \n\n"
     id = 1
     for row in select:
@@ -121,6 +143,10 @@ def index():
             save_news(chat_id,args[0])
         elif command == '/saved_news':
             get_saved_news(chat_id)
+        elif command == '/delete_news' and len(args)>0:
+            delete_news(chat_id,args[0])
+        elif command == '/help':
+            send_msg(chat_id,HELP)
         else:
             send_msg(chat_id,f'Unrecognised command --> {command} \n Type /help for a list of available commands.')
         
