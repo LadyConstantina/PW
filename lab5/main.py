@@ -2,31 +2,28 @@ from flask import Flask
 from flask import request
 from flask import Response
 from flask_sqlalchemy import SQLAlchemy
-from flask_script import Manager
-from flask_migrate import Migrate
 import requests
 import uuid
+import urllib.parse
  
 app = Flask(__name__)
 
 __BOT_TOKEN = '6112376366:AAGg6qRTZR_smiL3sTafCGL7tCN6MOaXbrQ'
-URL = 'https://b1be-89-41-121-123.ngrok-free.app/'
+URL = 'https://189f-89-41-121-123.ngrok-free.app'
 HELP = ''' Commands Available:
-/start - start the session with bot
-/latest_news [args] - get latest news on a topic or in general
-/save_news url - save one url
-/saved_news - see saved news
-/delete_news url - delete the url from saved news
+/start  - start the session with bot
+/latest_news [args]   - get latest news on a topic or in general
+/save_news  url   - save one url
+/saved_news   - see saved news
+/delete_news  url   - delete the url from saved news
+/fun_fact_cat    - get a fun fact about cats
 '''
-
-
-
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///telegram_bot.db"
 db = SQLAlchemy(app)
-migrate = Migrate(app,db)
-manager = Manager(app)
+
+requests.get(f'https://api.telegram.org/bot{__BOT_TOKEN}/setWebhook?url={URL}')
 
 class News(db.Model):
     ID = db.Column(db.String(64), primary_key = True)
@@ -94,7 +91,10 @@ def send_msg(chat_id,message):
 
 def get_news(args):
     if len(args) > 0 :
-        query = '%20'.join(args)
+        args_safe = []
+        for word in args:
+            args_safe.append(urllib.parse.quote(word, safe=''))
+        query = '%20'.join(args_safe)
         url = (f'https://newsapi.org/v2/everything?'
             f'q="{query}"&'
             f'language=en&'
@@ -107,9 +107,13 @@ def get_news(args):
     response = requests.get(url)
     data = response.json()
     if data['status'] == 'ok':
-        articles = data['articles'][0:6]
+        if data['totalResults'] == 0:
+            return []
+        else:
+            news_nr = min(data['totalResults'],5)
+        articles = data['articles'][0:news_nr+1]
         news = []
-        for i in range(5):
+        for i in range(news_nr):
             add = articles[i]['url']
             news.append(add)
         return news
@@ -117,56 +121,55 @@ def get_news(args):
         return []
 
 def send_news(chat_id,news):
+    if not news:
+        send_msg(chat_id,"No news on the chosen topic.")
     for article in news:
         send_msg(chat_id,article)
     return []
+
+def get_fun_fact_cat(chat_id):
+    response = requests.get('https://catfact.ninja/fact')
+    fact = response.json()
+    return send_msg(chat_id,f'Fun fact: {fact["fact"]}')
 
 
 @app.route('/', methods=['GET','POST'])
 def index():
     if request.method == 'POST':
         msg = request.get_json()
-        chat_id = msg['message']['chat']['id']
-        text = msg['message']['text'].split(' ')
-        command = text[0]
-        args = []
-        if len(text) > 1 :
-            args = text[1:]
+        if 'message' in msg:
+            chat_id = msg['message']['chat']['id']
+            text = msg['message']['text'].split(' ')
+            command = text[0]
+            args = []
+            if len(text) > 1 :
+                args = text[1:]
 
-        if command == '/start':
-            print(save_user(chat_id,msg["message"]["from"]["first_name"]))
-            send_msg(chat_id,f'Hello, {msg["message"]["from"]["first_name"]}! What can I do for you today?')
-        elif command == '/latest_news':
-            news = get_news(args)
-            send_news(chat_id,news)
-        elif command == '/save_news' and len(args)>0:
-            save_news(chat_id,args[0])
-        elif command == '/saved_news':
-            get_saved_news(chat_id)
-        elif command == '/delete_news' and len(args)>0:
-            delete_news(chat_id,args[0])
-        elif command == '/help':
-            send_msg(chat_id,HELP)
-        else:
-            send_msg(chat_id,f'Unrecognised command --> {command} \n Type /help for a list of available commands.')
+            if command == '/start':
+                print(save_user(chat_id,msg["message"]["from"]["first_name"]))
+                send_msg(chat_id,f'Hello, {msg["message"]["from"]["first_name"]}! What can I do for you today?')
+            elif command == '/latest_news':
+                news = get_news(args)
+                send_news(chat_id,news)
+            elif command == '/save_news' and len(args)>0:
+                save_news(chat_id,args[0])
+            elif command == '/saved_news':
+                get_saved_news(chat_id)
+            elif command == '/delete_news' and len(args)>0:
+                delete_news(chat_id,args[0])
+            elif command == '/fun_fact_cat':
+                get_fun_fact_cat(chat_id)
+            elif command == '/help':
+                send_msg(chat_id,HELP)
+            else:
+                send_msg(chat_id,f'Unrecognised command --> {command} \n Type /help for a list of available commands.')
         
-        return Response('ok', status=200)
+            return Response('ok', status=200)
+        else:
+            return Response('ok', status=200)
     else:
-        return "<h1>Welcome!</h1>"
-
-@app.route('/webhook/')
-def setwebhook():
-    response = requests.get(f'https://api.telegram.org/bot{__BOT_TOKEN}/setWebhook?url={URL}')
-    if response:
-        return "OK"
-    else:
-        return "Error"
-
-
-
-
-
+        return "<h1>Welcome!</h1><h3>To try my new bot, find him -> <a href='https://t.me/faf202_Gilca_Constantina_bot'>HERE</a> <-</h3>"
 
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run(debug=False)
