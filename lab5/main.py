@@ -8,7 +8,7 @@ import urllib.parse
  
 app = Flask(__name__)
 
-__BOT_TOKEN = '6112376366:AAGg6qRTZR_smiL3sTafCGL7tCN6MOaXbrQ'
+__BOT_TOKEN = "YOUR TOKEN"
 URL = 'https://189f-89-41-121-123.ngrok-free.app'
 HELP = ''' Commands Available:
 /start  - start the session with bot
